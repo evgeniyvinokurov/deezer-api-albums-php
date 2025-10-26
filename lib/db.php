@@ -67,6 +67,11 @@ class database {
         return $this->sqlite_fetch_array($result);
     }
 
+    public function get_random_tracks() {
+        $result = $this->sqlite_query($this->dbhandle, "select tracks.title, tracks.artist from tracks ORDER BY RANDOM() LIMIT 15;");
+        return $this->sqlite_fetch_array($result);
+    }
+
     public function get_tracks($album) {
         $result = $this->sqlite_query($this->dbhandle, "select * from tracks where deezeralbum=".$album);                       
         return $this->sqlite_fetch_array($result);

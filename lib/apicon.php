@@ -142,6 +142,11 @@ class apicon {
         return $db->insert_row_playlistnames($name);
     }
 
+    static public function makeRandomPlaylist(){
+        $db = new database();
+        return $db->get_random_tracks();
+    }
+
     static public function getPlaylists(){
         $db = new database();
         return $db->get_playlits();

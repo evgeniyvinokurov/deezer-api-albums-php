@@ -7,6 +7,7 @@ class templater {
             <li><a href="/albums/list.php">Albums and Artists</a></li>
             <li><a href="/playlists/create.html">Create local playlist</a></li>
             <li><a href="/playlists/index.php">Local Playlists</a></li>
+            <li><a href="/playlists/random15.php">Random Parsed Tracks Playlist</a></li>
         </ul>';
     }
 
