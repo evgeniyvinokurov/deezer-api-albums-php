@@ -1,7 +1,9 @@
 <?php
 class templater {
     static public function getFooter(){
-        echo '<ul>
+        echo '
+        <h4>Sorry deezer rapidapi banned. Only locals things</h4>
+        <ul>
             <li><a href="/albums/index.html">Search for Artists and Albums</a></li>
             <li><a href="/albums/listtolisten.php">Favs</a></li>
             <li><a href="/albums/list.php">Albums and Artists</a></li>

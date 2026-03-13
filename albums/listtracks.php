@@ -16,23 +16,34 @@ echo "<h2>".$tracks[0]["artist"]." - ".$albumitem["title"]."</h2>";
 
 
 $playlists = apicon::getPlaylists();
-$playlistshtml = "";
+$playlistsselecthtml = "<br/><br/>Add to playlist, checkboxes: <br/><select name='p'>";
 
 foreach($playlists as $p){ 
-    $playlistshtml = $playlistshtml."&nbsp;<a href='/api/addtoplaylist.php?p=" .$p["playlistid"] . "&song=songid'> add to " . $p["playlistname"] . "</a>&nbsp;";
+    $playlistsselecthtml = $playlistsselecthtml."<option value='".$p["playlistid"]."'>".$p["playlistname"]."</option>";
 }
+
+$playlistsselecthtml = $playlistsselecthtml."</select>";
+
+
+$formstart = "<form method='get' action='/api/addtoplaylist.php'>";
+$form = "";
 
 $count = 1;
 foreach($tracks as $t){
     // tracks links    
-    $html = str_replace("songid", $t["deezerid"], $playlistshtml);
-
-    //tracks entries
-    echo "<div>".$count.". ".$t["title"].$html."</div>";
+    $checkboxtrack = "<input type='checkbox' name='songs[]' value='".$t["deezerid"]."'/>";  
+    $listitemtrack = "<span>".$count. ". " . $t["title"]. "</span>";
+    $form = $form . $checkboxtrack . $listitemtrack. "<br/>";
     $count++;
 }
+$submit = "<input type='submit' value='add' />";
+$formend = "</form>";
 
-echo "</div>";
+$html = $formstart . $form . $playlistsselecthtml . $submit . $formend;
+echo $html;
+// echo "</div>";
+
+
 echo templater::getFooter();
 
 ?>
